@@ -4,13 +4,13 @@
   <button>TODO</button>
 
   <ul>
-    <li v-for="thing in things" @click="clickThing(thing.id)">{{thing.label}}</li>
-  </ul> 
+    <li v-for="thing in things" @click="clickThing(thing.id)">
+      {{ thing.label }} - {{ thing.owner.fullName }}
+    </li>
+  </ul>
 
-
-
- <!--   <h1>TODO: Implement this page.</h1>
+  <!--   <h1>TODO: Implement this page.</h1>
   <p>(See also <em>assets/styles/pages/things/available-things.less</em>, <em>assets/js/pages/things/available-things.page.js</em>, and <em>api/controllers/things/view-available-things.js</em>.)</p>  -->
- 
 </div>
 
+<%- /* Expose server-rendered data as window.SAILS_LOCALS :: */ exposeLocalsToBrowser() %>
