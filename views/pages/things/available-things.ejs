@@ -3,16 +3,14 @@
     <h1>Things</h1>
     <p>View available items to borrow, or upload your own things.</p>
     <button>TODO</button>
-    <div class="row">
-      <div v-for="thing in things">
-        <div class="card col-sm-4">
-          <div class="card-body">
-            <h5 class="card-title">{{ thing.label }}</h5>
-            <p class="card-text">{{ thing.owner.fullName }}</p>
-            <button class="btn btn-primary" @click="clickThing(thing.id)">
-              Remove
-            </button>
-          </div>
+    <div class="listings" v-if="things.length > 0">
+      <div class="card col-sm-4" v-for="thing in things">
+        <div class="card-body">
+          <h5 class="card-title">{{ thing.label }}</h5>
+          <p class="card-text">{{ thing.owner.fullName }}</p>
+          <button class="btn btn-primary" @click="clickThing(thing.id)">
+            Remove
+          </button>
         </div>
       </div>
     </div>
