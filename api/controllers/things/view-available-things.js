@@ -22,6 +22,7 @@ module.exports = {
       id: this.req.me.id
     })
     .populate('friends');
+    
 
     var friendIds = _.pluck(me.friends,'id');
 
@@ -32,7 +33,9 @@ module.exports = {
         {owner: { in: friendIds}}
         
       ]
-    });
+    })
+    .populate('owner')
+    ;
     // Respond with view
     /////////////////////////////////////////
     return {things};
