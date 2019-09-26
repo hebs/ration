@@ -9,29 +9,37 @@ module.exports = {
 
   inputs: {
     id: {
+      description: 'The id of the thing to destroy',
       type: 'number',
       required: true
-    }
+    },
 
   },
 
 
   exits: {
 
+    notFound: {
+      description: 'The thing you are trying to destroy was not found',
+      responseType: 'notFound'
+    },
+
     forbidden: {
       description: 'The user making this request doesn\'t have the permissions to delete this thing.',
       responseType: 'forbidden' //res.forbidden();
-    }
+    },
   },
 
 
-  fn: async function (inputs) {
+  fn: async function ({id}) {
 
-    var thing = await Thing.findOne({
-      id: inputs.id
-    });
-
-    if (thing.owner !== this.req.me.id) {
+    var thingToDestroy = await Thing.findOne({id });
+    //Ensure the thing still exists.
+    if(!thingToDestroy){
+      throw 'notfound'
+    }
+    //Verify Permissions
+    if (thingToDestroy.owner !== this.req.me.id) {
       throw 'forbidden';
     }
 
