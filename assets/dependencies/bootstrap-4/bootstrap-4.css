@@ -5405,7 +5405,7 @@ button.close {
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  width: 100%;
+  width: auto;
   pointer-events: auto;
   background-color: #fff;
   background-clip: padding-box;
@@ -5448,6 +5448,7 @@ button.close {
 .modal-header .close {
   padding: 1rem;
   margin: -1rem -1rem -1rem auto;
+  text-align: left;
 }
 
 .modal-title {

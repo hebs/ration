@@ -2,7 +2,7 @@
   <div class="container">
     <div class="page-header">
       <h1>Things</h1>
-      <p>View available items to borrow, or upload your own things.</p>
+      <h2>View available items to borrow, or upload your own things.</h2>
       <button class="btn btn-primary">Add an item</button>
     </div>
     <div class="listings" v-if="things.length > 0">
@@ -23,6 +23,30 @@
       </div>
     </div>
   </div>
+  <% /* "Confirm Delete Thing" Modal */%>
+
+  <modal class = "" v-if="confirmDeleteThingModelOpen">
+      <div class="modal-header">
+          <span class="modal-title">Remove this item?</span>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span>&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">  
+        <p>Are you sure you want to remove this thing?</p>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-outline-secondary mr-1">
+          Cancel
+        </button>
+        <button class = "btn btn-danger ml-1">
+          Remove
+        </button>
+      </div>  
+     
+
+    </modal>
+
 </div>
 
 <%- exposeLocalsToBrowser() %>
