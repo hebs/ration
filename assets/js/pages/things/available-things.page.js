@@ -7,6 +7,10 @@ parasails.registerPage('available-things', {
     things: [],
     confirmDeleteThingModelOpen: false,
     selectedThing: undefined,
+    //Sycing / loading state:
+    syncing: false,
+    // Server error state:
+    cloudError: '',
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -27,13 +31,13 @@ parasails.registerPage('available-things', {
   //  ║║║║ ║ ║╣ ╠╦╝╠═╣║   ║ ║║ ║║║║╚═╗
   //  ╩╝╚╝ ╩ ╚═╝╩╚═╩ ╩╚═╝ ╩ ╩╚═╝╝╚╝╚═╝
   methods: {
-    //…
-    clickThing: async function (thingId){
+    //commented out so we arent destroying things when you click them
+/*     clickThing: async function (thingId){
       console.log('clicked thing#'+thingId);
       await Cloud.destroyOneThing.with({ id: thingId});
       _.remove(this.things, { id: thingId});
       this.$forceUpdate();
-    },
+    }, */
     clickDeleteThing: function(thingId){
       console.log('clicked the "delete" button!');
       this.confirmDeleteThingModelOpen = true;
