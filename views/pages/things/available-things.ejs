@@ -23,9 +23,9 @@
       </div>
     </div>
   </div>
-  <% /* "Confirm Delete Thing" Modal */%>
+  <% /* "Confirm Delete Thing" Modal  - What I came up with*/%>
 
-  <modal class = "" v-if="confirmDeleteThingModelOpen">
+ <!--  <modal class = "" v-if="confirmDeleteThingModelOpen">
       <div class="modal-header">
           <span class="modal-title">Remove this item?</span>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -40,13 +40,30 @@
           Cancel
         </button>
         <button class = "btn btn-danger ml-1">
-          Remove
+           Remove
         </button>
       </div>  
      
 
-    </modal>
-
+    </modal> -->
+    <% /* "Confirm Delete Thing" Modal  - from the tutorial*/%>
+    <modal v-if="confirmDeleteThingModelOpen && selectedThing" v-cloak key="delete" @close="closeDeleteThingModal()">
+      <div class="modal-header">
+        <h5 class="modal-title">Remove this item?
+        <button type = "button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times</span>
+        </button>
+      </h5>
+      </div>
+      <div class = "modal-body">
+        <p>Are you sure you want to remove this {{selectedThing.label || 'item'}}?</p>
+        <p>This item will no longer be available to share with friends.</p>
+      </div>
+      <div class="modal-footer">
+        <button data-dismiss="modal" class="btn btn-outline-secondary mr-1">Nevermind</button>
+        <button type="submit" class="btn btn-danger ml-1">Remove</button>
+      </div>
+  </modal>
 </div>
 
 <%- exposeLocalsToBrowser() %>

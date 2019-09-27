@@ -6,6 +6,7 @@ parasails.registerPage('available-things', {
     //…
     things: [],
     confirmDeleteThingModelOpen: false,
+    selectedThing: undefined,
   },
 
   //  ╦  ╦╔═╗╔═╗╔═╗╦ ╦╔═╗╦  ╔═╗
@@ -33,9 +34,14 @@ parasails.registerPage('available-things', {
       _.remove(this.things, { id: thingId});
       this.$forceUpdate();
     },
-    clickDeleteThing: function(){
+    clickDeleteThing: function(thingId){
       console.log('clicked the "delete" button!');
       this.confirmDeleteThingModelOpen = true;
+      this.selectedThing = _.find(this.things, {id: thingId});
+    },
+    closeDeleteThingModal: function(){
+      this.selectedThing = undefined;
+      this.confirmDeleteThingModelOpen = false;
     }
   }
 });
