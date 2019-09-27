@@ -1,16 +1,24 @@
 <div id="available-things" v-cloak>
   <div class="container">
-    <h1>Things</h1>
-    <p>View available items to borrow, or upload your own things.</p>
-    <button>TODO</button>
+    <div class="page-header">
+      <h1>Things</h1>
+      <p>View available items to borrow, or upload your own things.</p>
+      <button class="btn btn-primary">Add an item</button>
+    </div>
     <div class="listings" v-if="things.length > 0">
-      <div class="card col-sm-4" v-for="thing in things">
+      <div class="card" v-for="thing in things">
         <div class="card-body">
-          <h5 class="card-title">{{ thing.label }}</h5>
-          <p class="card-text">{{ thing.owner.fullName }}</p>
-          <button class="btn btn-primary" @click="clickThing(thing.id)">
+          <h5 class="card-title">{{ thing.label }}
+              <span class="options-button" data-toggle="tooltip" data-placement="top" title="Delete" @click="clickDeleteThing(thing.id)" v-if="thing.owner.id === me.id"><span class="fa fa-trash-o text-danger"></span></span>
+          </h5>
+          <p class="card-text"><!-- {{ thing.owner.fullName }}  -->
+              <small class="owner text-secondary" v-if="thing.owner.id === me.id"><span class="fa fa-home mr-1"></span> Mine</small>
+              <small class="owner text-primary" v-else>{{thing.owner.fullName}}</small>
+          </p>
+          
+<!--           <button class="btn btn-primary" @click="clickThing(thing.id)">
             Remove
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
