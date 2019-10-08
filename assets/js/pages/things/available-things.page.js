@@ -5,8 +5,9 @@ parasails.registerPage('available-things', {
   data: {
     //…
     things: [],
-    confirmDeleteThingModelOpen: false,
+    confirmDeleteThingModalOpen: false,
     selectedThing: undefined,
+
     //Sycing / loading state:
     syncing: false,
     // Server error state:
@@ -40,12 +41,29 @@ parasails.registerPage('available-things', {
     }, */
     clickDeleteThing: function(thingId){
       console.log('clicked the "delete" button!');
-      this.confirmDeleteThingModelOpen = true;
+      this.confirmDeleteThingModalOpen = true;
       this.selectedThing = _.find(this.things, {id: thingId});
     },
+
     closeDeleteThingModal: function(){
       this.selectedThing = undefined;
-      this.confirmDeleteThingModelOpen = false;
+      this.confirmDeleteThingModalOpen = false;
+    },
+
+    handleParsingDeleteThingForm: function(){
+      return{
+        id: this.selectedThing.id
+      };
+    },
+
+    submittedDeleteThingForm: function(){
+      console.log('ok it worked!');
+      _.remove(this.things, { id: this.selectedThing.id});
+      this.$forceUpdate();
+
+      this.confirmDeleteThingModalOpen = false;
+      this.selectedThing = undefined;
     }
+
   }
 });

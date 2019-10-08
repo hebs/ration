@@ -33,7 +33,7 @@ module.exports = {
 
   fn: async function ({id}) {
 
-    var thingToDestroy = await Thing.findOne({id });
+    var thingToDestroy = await Thing.findOne({ id });
     //Ensure the thing still exists.
     if(!thingToDestroy){
       throw 'notfound'

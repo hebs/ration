@@ -66,6 +66,6 @@ module.exports.routes = {
   'POST  /api/v1/entrance/update-password-and-login':    { action: 'entrance/update-password-and-login' },
   'POST  /api/v1/deliver-contact-form-message':          { action: 'deliver-contact-form-message' },
   //added from tutorial
-  'DELETE /api/v1/things/destroy-one-thing': { action: 'things/destroy-one-thing' },
+  'DELETE /api/v1/things/:id': { action: 'things/destroy-one-thing' },
 
 };
